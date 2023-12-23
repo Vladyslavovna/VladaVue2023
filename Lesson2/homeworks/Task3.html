@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+<style>
+	body {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.rightAnswer {
+		border: 3px solid green;
+	}
+
+	.wrongAnswer {
+		border: 3px solid red;
+	}
+
+	.mainClass {
+		display: flex;
+		flex-direction: column;
+		width: 200px;
+		height: 500px;
+		justify-content: center;
+		text-align: center;
+	}
+</style>
+
+<body>
+	<h5>
+		Задача 3. Елемент тренажера англійської. Виводимо зображення елемента і слово. Користувач вводить відповідь.
+		Якщо вірно – відтворюємо фразу «Добре. Молодець!» (і додаємо зелену рамку до елемента), якщо ні - то
+		відтворюємо фразу «Невірно, спробуйте ще раз» (і додаємо червону рамку)
+	</h5>
+
+	<div id="app">
+
+
+		<div :class="['mainClass',borderStyle]">
+
+
+			<img src="../homeworks/table.jpg" alt="#">
+
+			<span>Table</span>
+
+			<label>
+				Ваш переклад:
+				<input type="text" v-model="userAnswer">
+			</label>
+			<button @click="checkUserAnswer">Перевірити</button>
+
+			<span>{{result}}</span>
+		</div>
+
+
+
+	</div>
+
+
+	<script>
+		const { createApp } = Vue
+
+		const app = createApp({
+			data() {
+				return {
+					userAnswer: null,
+					borderStyle: null,
+					result: null,
+				}
+			},
+			computed: {
+
+			},
+			methods: {
+				checkUserAnswer() {
+					if(this.userAnswer.toLowerCase() === 'стіл') {
+						this.result = 'Добре. Молодець!'
+						this.borderStyle = 'rightAnswer'
+					} else {
+						this.result = 'Невірно, спробуйте ще раз'
+						this.borderStyle = 'wrongAnswer'
+					}
+				}
+			}
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

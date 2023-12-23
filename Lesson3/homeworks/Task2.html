@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+<style>
+	.boys {
+		border: 2px solid blue;
+		width: 100px;
+	}
+
+	.girls {
+		border: 2px solid pink;
+		width: 100px;
+	}
+
+	li {
+		cursor: pointer;
+		list-style: none;
+		margin-bottom: 10px;
+	}
+
+	ul {
+		border: 1px solid black;
+	}
+</style>
+
+<body>
+	<!-- Задача 6. Пари для танців. Поступово вибираємо хлопця, дівчину і додаємо у обрані пари. Пару можна видалити. Поки
+	не вибрано хлопця і дівчину кнопка «Додати» заблокована. Якщо не вистачає хлопців або дівчат вибір також
+	блокується. -->
+
+	<div id="app">
+
+		<ul>
+			Список хлопців
+			<li v-for="boy in boysList" :key="boy.id" @click="selectBoy(boy)" :class="{
+				selectedBoy: selectedBoy === boy,
+				boys: selectedBoy === boy
+			}">{{ boy.name }}</li>
+		</ul>
+		<ul>
+			Список дівчат
+			<li v-for="girl in girlsList" :key="girl.id" @click="selectGirl(girl)" :class="{
+				selectedGirl: selectedGirl === girl,
+				girls: selectedGirl === girl
+			}">{{ girl.name }}</li>
+		</ul>
+
+
+		<button @click="addPair" :disabled="!isChosenPair">Додати</button>
+
+		<div>
+			Список пар
+			<div v-for="pair in pairs" :key="pair.id">{{ pair.boy.name }} - {{ pair.girl.name }}
+				<button @click="deletePair(pair)">Видалити пару</button>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script>
+		const { createApp } = Vue
+		const app = createApp({
+
+			data() {
+				return {
+					boysList: [
+						{ id: 1, name: "Олексій" },
+						{ id: 2, name: "Максим" },
+						{ id: 3, name: "Андрій" },
+						{ id: 4, name: "Іван" },
+						{ id: 5, name: "Дмитро" },
+
+					],
+					girlsList: [
+						{ id: 6, name: "Анна" },
+						{ id: 7, name: "Марія" },
+						{ id: 8, name: "Катерина" },
+						{ id: 9, name: "Софія" },
+						{ id: 10, name: "Вікторія" },
+					],
+					pairs: [],
+					selectedBoy: null,
+					selectedGirl: null,
+				}
+
+			},
+			computed: {
+
+				isChosenPair() {
+					return this.selectedBoy && this.selectedGirl
+				}
+			},
+			methods: {
+				selectGirl(girl) {
+					this.selectedGirl = girl
+				},
+				selectBoy(boy) {
+					this.selectedBoy = boy
+				},
+
+				addPair() {
+					if(this.selectedBoy && this.selectedGirl) {
+						this.pairs.push({
+							id: this.pairs.length + 1,
+							boy: this.selectedBoy,
+							girl: this.selectedGirl,
+
+						})
+						this.girlsList.splice(this.girlsList.indexOf(this.selectedGirl), 1)
+						this.boysList.splice(this.boysList.indexOf(this.selectedBoy), 1)
+						this.selectedBoy = null
+						this.selectedGirl = null
+					}
+
+
+				},
+				deletePair(pair) {
+					const index = this.pairs.indexOf(pair)
+					if(index !== -1) {
+						const deletedPair = this.pairs.splice(index, 1)[0]
+						this.girlsList.push(deletedPair.girl)
+						this.boysList.push(deletedPair.boy)
+					}
+
+				},
+
+			}
+
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

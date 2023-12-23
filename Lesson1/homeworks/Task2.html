@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+
+<body>
+	<h5>
+		Задача 2. Вводиться номер місяця. Автоматично виводити рекомендований одяг (зима – пальто, літо – шорти ….).
+		Також автоматично виводити зображення з відповідним зображенням лісу (зима – ліс зі снігом, осінь – жовтий
+		ліс, …).
+	</h5>
+	<div id="app">
+		<div>
+			<label>
+				Введіть номер місяця
+				<input type="number" v-model="monthNumber">
+			</label>
+		</div>
+
+		<div>
+			{{showMessage}}
+		</div>
+<img :src="showPicture">
+
+
+	</div>
+
+
+
+	<script>
+		const { createApp } = Vue
+
+		createApp({
+			data() {
+				return {
+					monthNumber: 1,
+				}
+			},
+			computed: {
+				showMessage() {
+					let message
+					if(this.monthNumber < 3 && this.monthNumber !== 0 || this.monthNumber === 12) {
+						message = 'Зима,вдягайся тепліше'
+					} else if(this.monthNumber > 2 && this.monthNumber < 6) {
+						message = 'Весна,візьми з собою курточку'
+					} else if(this.monthNumber > 5 && this.monthNumber < 9) {
+						message = 'Літо, вперед на пляж'
+					} else if(this.monthNumber >= 9 && this.monthNumber <=11){
+						message = 'Осінь,візьми з собою парасольку'
+					}
+					 else {
+						message = 'Такого місяця не існує'
+					}
+					return message
+				},
+				showPicture() {
+					let picture
+					if(this.monthNumber < 3 && this.monthNumber !== 0 || this.monthNumber === 12) {
+						picture = '../homeworks/winter.jpeg'
+					} else if (this.monthNumber > 2 && this.monthNumber < 6) {
+						picture = '../homeworks/spring.jpg'
+					} else if(this.monthNumber > 5 && this.monthNumber < 9) {
+						picture = '../homeworks/summer.jpg'
+					} else if(this.monthNumber >= 9 && this.monthNumber <=11) {
+						picture = '../homeworks/outmn.jpg'
+					} else{
+						picture = ''
+					}
+					return picture
+				}
+			},
+		}).mount('#app')
+	</script>
+
+</body>
+
+</html>

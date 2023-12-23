@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+<style>
+	.wrap {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.block {
+		border: 2px solid blue;
+		margin-bottom: 10px;
+		padding: 10px;
+	}
+</style>
+
+<body>
+
+	<h5>
+		Задача 5. Самостійно сформуйте масив даних та виведіть фрагмент на зразок поданого (дані не обов’язково
+		повинні співпадати)
+	</h5>
+
+
+	<div id="app">
+		<div v-for="website in websitesList" :key="website.name" class="block">
+			<div style="display: flex;">
+				<img :src="website.favicon" alt="#">
+				<div class="wrap">
+					<span>{{website.name}}</span>
+					<a :href="website.domain">{{website.domain}}</a>
+				</div>
+
+			</div>
+			<div>
+				<h4>{{website.title}}</h4>
+				<p>{{website.description}}</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+
+		const { createApp } = Vue
+
+		const websites = [
+			{
+				name: "Google",
+				domain: "https://google.com",
+				favicon: "https://img.icons8.com/fluency/48/google-logo.png",
+				title: "Google - пошукова система",
+				description: "Google - одна з найбільших пошукових систем у світі. Заснована в 1998 році."
+			},
+			{
+				name: "Facebook",
+				domain: "https://facebook.com",
+				favicon: "https://img.icons8.com/color/48/facebook.png",
+				title: "Facebook - соціальна мережа",
+				description: "Facebook - найбільша соціальна мережа з мільярдами користувачів по всьому світу."
+			},
+			{
+				name: "Amazon",
+				domain: "https://amazon.com",
+				favicon: "https://img.icons8.com/color/48/amazon.png",
+				title: "Amazon - інтернет-магазин",
+				description: "Amazon - найбільший онлайн-роздрібник, що пропонує різноманітні товари та послуги."
+			},
+			{
+				name: "YouTube",
+				domain: "https://youtube.com",
+				favicon: "https://img.icons8.com/color/48/youtube-play.png",
+				title: "YouTube - відеохостинг",
+				description: "YouTube - популярний відеохостинг, де користувачі можуть завантажувати та дивитися відеоролики."
+			},
+			{
+				name: "Wikipedia",
+				domain: "https://wikipedia.org",
+				favicon: "https://img.icons8.com/color/48/wikipedia-logo.png",
+				title: "Wikipedia - вільна енциклопедія",
+				description: "Wikipedia - колаборативна енциклопедія, створювана користувачами з усього світу."
+			}
+		]
+
+		const app = createApp({
+
+
+			computed: {
+				websitesList() {
+					return websites
+				}
+			}
+		}).mount('#app')
+
+
+	</script>
+</body>
+
+</html>

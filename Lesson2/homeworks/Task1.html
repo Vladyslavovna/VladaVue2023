@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+<style>
+	.admin {
+		color: blue;
+	}
+
+	.user {
+		color: red;
+	}
+</style>
+
+<body>
+	<h5>
+		Задача 1. Вводимо логіна і пароль. Якщо логін вірний відображаємо смайл. Якщо ні, то:
+		1) якщо логін = Іван – колір повідомлення про помилку синій
+		2) якщо хтось інший, то колір повідомлення червоний
+
+	</h5>
+	<div id="app">
+
+		<label>
+			Введіть логін
+			<input type="text" v-model="userLogin">
+		</label>
+		<label>
+			Введіть пароль
+			<input type="password" v-model="userPassword">
+		</label>
+		<button @click="appLogin">Увійти</button>
+
+
+		<div v-show="isUserAuthorised">
+			<img src="../homeworks/like-smile.png">
+			<span>Успішно!</span>
+		</div>
+
+		<div v-if="!isUserAuthorised && loginAttampt">
+			<span :class="messageStyles">Невірний логін або пароль</span>
+		</div>
+	</div>
+
+	<script>
+
+		const { createApp } = Vue
+
+		const userList = [
+			{
+				userLogin: 'ivan',
+				userPassword: '111'
+			},
+			{
+				userLogin: 'petro',
+				userPassword: '222'
+			},
+			{
+				userLogin: 'mariya',
+				userPassword: '333'
+			}
+		]
+		const app = createApp({
+
+			data() {
+				return {
+					isUserAuthorised: false,
+					loginAttampt: false,
+					userLogin: '',
+					userPassword: '',
+					isAdmin: false
+				}
+			},
+
+			computed: {
+				messageStyles() {
+					return this.userLogin === 'ivan' ? 'admin' : 'user'
+
+				},
+			},
+
+			methods: {
+
+				appLogin() {
+					this.loginAttampt = true
+					for(let i = 0; i < userList.length; i++) {
+						if(this.userLogin === userList[i].userLogin && this.userPassword === userList[i].userPassword) {
+							this.isUserAuthorised = true
+							break
+						}
+						this.isUserAuthorised = false
+					}
+				},
+
+
+			},
+
+
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

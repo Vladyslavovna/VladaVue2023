@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+
+<body>
+	<h5>
+		Задача 4. “Рахунок у банку”
+		Вимоги:
+		1) Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.
+		2) Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+		3) можливість зарахувати суму (контролювати, щоб не була від’ємною)
+		4) можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+		5) при виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків
+		автоматично)
+
+		При зміні суми :
+		- якщо було зняття, то суму відоражати червоним
+		- якщо було зарахування, то суму відображати зеленим
+		Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим
+	</h5>
+	<div id="app">
+
+
+
+		<div>
+			<label>
+				Сумма на рахунку
+				<span :style="{color: balanceColor}">{{balance}} грн</span>
+			</label>
+		</div>
+
+		<div>
+			<label>
+				Поповнити рахунок на
+				<input type="number" v-model="addNumber">
+			</label>
+			<button @click="addToBalance">Поповнити</button>
+		</div>
+		<div>
+			<label>
+				Зняти з рахунку
+				<input type="number" v-model="withdrawNumber">
+			</label>
+			<button @click="withdrawFromBalance">Зняти</button>
+		</div>
+		<div>
+			<label>
+				Відсоток за обсуговування
+				<span>{{percentsSum}} грн</span>
+			</label>
+
+		</div>
+		<div>
+			<label>
+				Сумма на рахунку в долларах
+				<span :style="{color: curencyColor}">{{dollarSum}} $</span>
+			</label>
+
+		</div>
+		<div>
+			<label>
+				Сумма на рахунку в євро
+				<span :style="{color: curencyColor}">{{euroSum}} € </span>
+			</label>
+
+		</div>
+
+
+	</div>
+
+	<script>
+		const { createApp } = Vue
+		let sumWithPercents
+		let curencyResult
+		createApp({
+			data() {
+				return {
+					balance: 0,
+					addNumber: null,
+					withdrawNumber: null,
+					percents: 0.03,
+					percentsSum: 0,
+					dollarRate: 36,
+					euroRate: 42,
+					curencyColor: 'black'
+				}
+			},
+
+			computed: {
+				dollarSum() {
+					curencyResult = (this.balance / this.dollarRate).toFixed(2)
+					this.curencyColor = parseFloat(curencyResult) < 100 ? 'red' : 'green'
+					return curencyResult
+				},
+				euroSum() {
+					curencyResult = (this.balance / this.euroRate).toFixed(2)
+					this.curencyColor = parseFloat(curencyResult) < 100 ? 'red' : 'green'
+					return curencyResult
+				},
+			},
+
+			methods: {
+				addToBalance() {
+					if(this.addNumber > 0) {
+						sumWithPercents = Math.round(this.addNumber / (1 + this.percents))
+						this.balance += sumWithPercents
+						this.percentsSum += (this.addNumber - sumWithPercents)
+						this.addNumber = 0
+						this.balanceColor = 'green'
+					}
+				},
+				withdrawFromBalance() {
+					if(this.withdrawNumber > 0 && this.balance !== 0 && this.withdrawNumber <= this.balance) {
+						this.balance -= this.withdrawNumber
+						this.withdrawNumber = 0
+						this.balanceColor = 'red'
+					}
+				}
+
+			}
+		}).mount('#app')
+	</script>
+
+</body>
+
+</html>

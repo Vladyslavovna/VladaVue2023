@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+<style>
+	.border {
+		border: 2px solid black;
+	}
+</style>
+
+<body>
+	<h5>
+		Задача 6. Задача. На кухню поступають замовлення. Спочатку ми додаємо їх у список “Очікують на виконання”,
+		якщо повар береться робити — замовлення переходить у список “Виконуються”, якщо замовлення виконано —
+		переходить у список “Готові до виносу”. Якщо натиснути на “Подано” - страва зникає з таблиці
+	</h5>
+
+
+	<div id="app">
+
+
+		<div>
+			<label>
+				Нова страва
+				<input type="text" v-model="newDishTitle">
+			</label>
+			<button @click="addNewDish">Замовити</button>
+		</div>
+
+
+		<div class="border">
+			<h6>
+				Очікують на виконання
+			</h6>
+
+			<div v-for="newDish in waitingList" :key="newDish.id">
+				<span>{{newDish.title}}</span>
+				<button @click="takeDish(newDish.id)">Готувати</button>
+			</div>
+
+		</div>
+
+
+		<div  class="border">
+			<h6>
+				Виконуються
+			</h6>
+
+			<div v-for="processingDish in processingList" :key="processingDish.id">
+				<span>{{processingDish.title}}</span>
+				<button @click="doneDish(processingDish.id)">Приготовлено</button>
+			</div>
+
+		</div>
+
+		<div  class="border">
+			<h6>
+				Готові до виносу
+			</h6>
+
+			<div v-for="completedDish in completedList" :key="completedDish.id">
+				<span>{{completedDish.title}}</span>
+				<button @click="eatDish(completedDish.id)">Подано</button>
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<script>
+
+		const { createApp } = Vue
+
+		const app = createApp({
+
+			data() {
+				return {
+					newDishTitle: null,
+					waitingList: [],
+					processingList: [],
+					completedList: []
+
+				}
+			},
+
+			methods: {
+				addNewDish() {
+					this.waitingList.push({
+						title: this.newDishTitle,
+						id: this.generateRandomId(),
+					})
+					this.newDishTitle = null
+				},
+				takeDish(id) {
+					const index = this.waitingList.findIndex(newDish => newDish.id === id)
+					if(index !== -1) {
+						const dish = this.waitingList.splice(index, 1)[0]
+						this.processingList.push(dish)
+					}
+				},
+				doneDish(id) {
+					const index = this.processingList.findIndex(newDish => newDish.id === id)
+					if(index !== -1) {
+						const dish = this.processingList.splice(index, 1)[0]
+						this.completedList.push(dish)
+					}
+				},
+				eatDish(id) {
+					const index = this.completedList.findIndex(newDish => newDish.id === id)
+					if(index !== -1) {
+						const dish = this.completedList.splice(index, 1)[0]
+					}
+				},
+
+				generateRandomId() {
+					return Math.floor(Math.random() * 100) + 1
+				}
+			}
+
+
+		}).mount('#app')
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Document</title>
+</head>
+
+<style>
+	.businessImage {
+		background-image: url(../homeworks/business-class.jpg);
+	}
+</style>
+
+<body>
+
+	<h5>
+		Задача 2. З випадаючого списку вибираємо клас квитка у літаку. Якщо
+		1) бізнес - виводимо елементи для вибору газети та коньяку (якщо вибрано коньяк, то запропонувати закуску
+		(так/ні)), на фоні зображення бізнес кают
+		2) економ – виводимо елементи для вибору типу пива і чипсів, на фоні хмарки.
+
+	</h5>
+
+	<div id="app">
+
+		<select v-model="ticketValue">
+			<option value="businessTicket">
+				Квиток бізнес
+			</option>
+			<option value="economTicket">
+				Квиток економ
+			</option>
+		</select>
+<!-- 
+я не впевнена що так доречно робити... -->
+		<div v-show="isBusiness" :style="{backgroundImage: 'url(../homeworks/business.jpg)' , height: '500px'}"> 
+			<select v-model="businessPreference">
+				<option value="cognac">
+					Коньяк
+				</option>
+				<option value="newspaper">
+					Газета
+				</option>
+			</select>
+
+			<div v-show="offerSnack">
+				<span>
+					Бажаєте закуску?
+				</span>
+				<label>
+					Так
+					<input type="checkbox">
+				</label>
+				<label>
+					Ні
+					<input type="checkbox">
+				</label>
+			</div>
+		</div>
+
+
+
+		<div v-show="isEconom" :style="{backgroundImage: 'url(../homeworks/clouds.jpg)' , height: '500px'}">
+			<select>
+				<option>
+					Пиво
+				</option>
+				<option>
+					Чіпси
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<script>
+
+		const { createApp } = Vue
+
+		const app = createApp({
+
+			data() {
+				return {
+					ticketValue: null,
+					businessPreference: null
+				}
+			},
+			computed: {
+				isBusiness() {
+					return this.ticketValue === 'businessTicket'
+				},
+				isEconom() {
+					return this.ticketValue === 'economTicket'
+				},
+				offerSnack() {
+					return this.businessPreference === 'cognac'
+				}
+			},
+
+		}).mount('#app')
+
+	</script>
+</body>
+
+</html>
