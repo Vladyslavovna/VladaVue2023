@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Ноутбуки",
+      "image": "https://i.citrus.world/imgcache/size_800/uploads/shop/a/b/ab57c44fc5b18c2468229cd60e4089ed.jpg",
+      "category":"1"
+    },
+    {
+      "title": "Комп'ютери",
+      "image": "https://i.playground.ru/p/4n2VRo5SFs_6FQr8mXqHdQ.png.webp?599-auto",
+      "category":"2"
+    },
+    {
+      "title": "Телефони",
+      "image": "https://www.aks.ua/images/categories/5-1675495284.webp",
+      "category":"3"
+    },
+    {
+      "title": "Планшети",
+      "image": "https://content1.rozetka.com.ua/goods/images/big_tile/282073683.jpg",
+      "category":"4"
+    }
+  ]

@@ -1,0 +1,72 @@
+[
+  {
+    "image": "https://toyota-odessa.com.ua/uploads/media/dc_car_gallery/0001/37/9b8350489ae41b40ef60279f72597411b96ad475.jpeg",
+    "category": "Легкові",
+    "type": "Седан",
+    "brand": "Toyota",
+    "model": "Corolla",
+    "price_usd": "20,000 $",
+    "price_uah": "500,000 grn",
+    "mileage": "50,000",
+    "fuel_capacity": "55",
+    "city": "Київ",
+    "transmission": "Автомат",
+    "id": "1"
+  },
+  {
+    "image": "https://nextcar.ua/images/blog/552/volkswagen-golf-r-333-limited-edition.jpg",
+    "category": "Легкові",
+    "type": "Універсал",
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "price_usd": "25,000 $",
+    "price_uah": "625,000 grn",
+    "mileage": "30,000",
+    "fuel_capacity": 50,
+    "city": "Одеса",
+    "transmission": "Механіка",
+    "id": "2"
+  },
+  {
+    "image": "https://i.infocar.ua/i/12/5590/1400x936.jpg",
+    "category": "Легкові",
+    "type": "Седан",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "price_usd": "40,000 $",
+    "price_uah": "1,000,000 grn",
+    "mileage": "10,000",
+    "fuel_capacity": 75,
+    "city": "Харків",
+    "transmission": "Єлектромобіль",
+    "id": "3"
+  },
+  {
+    "image": "https://iv.kommersant.ru/Issues.photo/AUTO_News/2023/01/12/KMO_152985_10054_1_t218_122405.jpg",
+    "category": "Позашляховик",
+    "type": "Чорний",
+    "brand": "Suzuki",
+    "model": "Jimny",
+    "price_usd": "25,000 $",
+    "price_uah": "625,000 grn",
+    "mileage": "30,000",
+    "fuel_capacity": 50,
+    "city": "Київ",
+    "transmission": "Механiка",
+    "id": "4"
+  },
+  {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/2018_Land_Rover_Discovery_Luxury_HSE_TD6_3.0_Front.jpg/1200px-2018_Land_Rover_Discovery_Luxury_HSE_TD6_3.0_Front.jpg",
+    "category": "Позашляховик",
+    "type": "Бумер",
+    "brand": "Land Rover",
+    "model": "Discovery",
+    "price_usd": "50,000 $",
+    "price_uah": "1,250,000 grn",
+    "mileage": "10,000",
+    "fuel_capacity": 90,
+    "city": "Київ",
+    "transmission": "Автомат",
+    "id": "5"
+  }
+]
