@@ -1,0 +1,23 @@
+[
+    {
+      "categoryId": 1,
+      "id": 101,
+      "categoryName": "Ноутбуки"
+    },
+    {
+      "categoryId": 2,
+      "id": 102,
+      "categoryName": "Телефони"
+    },
+    {
+      "categoryId": 3,
+      "id": 103,
+      "categoryName": "Телевізори"
+    },
+    {
+      "categoryId": 4,
+      "id": 104,
+      "categoryName": "Монітори"
+    }
+  ]
+  

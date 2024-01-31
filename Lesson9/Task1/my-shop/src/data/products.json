@@ -1,0 +1,59 @@
+[
+    {
+      "categoryId": 1,
+      "id": 201,
+      "productName": "Dell XPS 13",
+      "productImg": "https://content.rozetka.com.ua/goods/images/big/363139164.jpg",
+      "productPrice": 1200
+    },
+    {
+      "categoryId": 1,
+      "id": 202,
+      "productName": "MacBook Pro",
+      "productImg": "https://cdn1.it4profit.com/AfrOrF3gWeDA6VOlDG4TzxMv39O7MXnF4CXpKUwGqRM/resize:fill:540/bg:f6f6f6/q:100/plain/s3://catalog-products/220621082629954559/220831140011224734.png@webp",
+      "productPrice": 1500
+    },
+    {
+      "categoryId": 2,
+      "id": 301,
+      "productName": "iPhone 13",
+      "productImg": "data:image/jpeg;base64,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",
+      "productPrice": 1000
+    },
+    {
+      "categoryId": 2,
+      "id": 302,
+      "productName": "Samsung Galaxy S21",
+      "productImg": "https://cdn11.bigcommerce.com/s-ss31ap/images/stencil/1280x1280/products/7843/35368/SM-G998UZSAXAA__75108.1610752886.1280.1280__49730__06408.1630542264.jpg?c=2",
+      "productPrice": 900
+    },
+    {
+      "categoryId": 3,
+      "id": 401,
+      "productName": "Sony Bravia OLED 4K",
+      "productImg": "https://a.allegroimg.com/original/11b29f/746436fc4723b25bc24d3918396d/Android-TV-55-OLED-Sony-KD-55A8-4K-HDR-120-Hz",
+      "productPrice": 2000
+    },
+    {
+      "categoryId": 3,
+      "id": 402,
+      "productName": "LG NanoCell 8K",
+      "productImg": "https://www.lg.com/ua/images/televisions/md07526244/gallery/medium01.jpg",
+      "productPrice": 2500
+    },
+    {
+      "categoryId": 4,
+      "id": 505,
+      "productName": "Dell UltraSharp U2719D",
+      "productImg": "https://i.pcmag.com/imagery/reviews/03QDw1iD6BOqtKYxNYlSFgf-1.fit_lim.size_1050x591.v1614826163.jpg",
+      "productPrice": 1300
+    },
+    {
+      "categoryId": 4,
+      "id": 506,
+      "productName": "LG 27GL83A-B",
+      "productImg": "https://www.lg.com/ua/images/monitors/md07508131/gallery/medium01.jpg",
+      "productPrice": 1100
+    }
+  ]
+  
