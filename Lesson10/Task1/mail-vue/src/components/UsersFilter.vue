@@ -2,7 +2,7 @@
     <div class="block">
         <label>
             Фільтрувати
-            <input type="text" v-model="filterVal">
+            <input v-model="filterVal" type="text" >
         </label>
     </div>
 </template>
@@ -17,8 +17,11 @@ export default {
         }
     },
     watch: {
-        filterVal() {
-            this.$store.dispatch('setFilter', this.filterVal)
+        filterVal: {
+            handler(newVal) {
+                this.setFilter(newVal)
+            },
+            deep: true
         }
     },
     methods: {

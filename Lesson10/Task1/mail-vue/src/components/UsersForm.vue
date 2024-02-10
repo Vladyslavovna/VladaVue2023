@@ -9,11 +9,11 @@
                 <div class="filter-inputs">
                     <label>
                         Ім'я
-                        <input type="text" v-model="userName" required="required">
+                        <input v-model="userName" type="text"  required="required">
                     </label>
                     <label>
                         Поштова скринька
-                        <input type="email" v-model="userMail" required="required">
+                        <input v-model="userMail" type="email"  required="required">
                     </label>
                 </div>
                 <button class="add" type="submit" @click="addUserToList">Додати</button>
